@@ -68,3 +68,16 @@ for ($i = 0; $i < $config['picture-count']; $i++) {
     sleep(1);
 }
 rotatehome();
+
+$folder = '../pics/' . date_format($current, 'Y/m/d/H');
+$dirhandle = opendir($folder);
+$count = 0;
+
+$image = imagecreate(640 * $config['picture-count'], 480);
+while (($file = readdir($dirhandle))) {
+    if (startsWith($file, date_format($current, 'i') . '-')) {
+        $imgtocopy = imagecreatefromjpeg($folder . '/' . $file);
+        imagecopy($image, $imgtocopy, 640 * $count++, 0, 0, 0, 640, 480);
+    }
+}
+imagejpeg($image, $folder . '/' . date_format($current, 'i') . '-panorama.jpg');
