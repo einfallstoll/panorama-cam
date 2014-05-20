@@ -1,5 +1,7 @@
 <?php
 
+ini_set('max_execution_time', 60);
+
 $config = json_decode(file_get_contents('../config.json'), 1);
 
 function takepicture($stamp, $num) {
