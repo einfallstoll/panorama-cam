@@ -59,6 +59,7 @@ date_default_timezone_set('Europe/Zurich');
 
 $current = date_create();
 
+setpanspeed(4);
 rotatehome();
 rotatecamera(6);
 for ($i = 1; $i < $config['picture-count']; $i++) {
