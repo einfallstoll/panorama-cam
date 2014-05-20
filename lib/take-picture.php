@@ -51,6 +51,10 @@ function rotatecamera($direction) {
     sleep(abs($direction));
 }
 
+function startsWith($haystack, $needle) {
+    return $needle === "" || strpos($haystack, $needle) === 0;
+}
+
 date_default_timezone_set('Europe/Zurich');
 
 $current = date_create();
