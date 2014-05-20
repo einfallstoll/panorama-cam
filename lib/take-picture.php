@@ -4,6 +4,14 @@ ini_set('max_execution_time', 60);
 
 $config = json_decode(file_get_contents('../config.json'), 1);
 
+function setpanspeed($panspeed) {
+    global $config;
+    
+    $url = 'http://' . $config['ip'] . '/cgi-bin/camctrl.cgi?speedpan=' + $panspeed;
+    $curl = curl_init($url);
+    curl_exec($curl);
+}
+
 function takepicture($stamp, $num) {
     global $config;
     
