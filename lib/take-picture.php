@@ -82,7 +82,7 @@ while (($file = readdir($dirhandle))) {
         if ($count == 0) {
 			imagecopy($image, $imgtocopy, $slicewidth * $count, 0, 0, 0, $slicewidth, 480-$heightadjustment);
 		} else {
-			imagecopy($image, $imgtocopy, $slicewidth * $count, $heightadjustment, 0, 0, $slicewidth, 480);
+			imagecopy($image, $imgtocopy, $slicewidth * $count, -$heightadjustment, 0, 0, $slicewidth, 480);
 		}
 		$count++;
     }
