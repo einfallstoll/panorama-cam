@@ -1,6 +1,6 @@
 <?php
 
-ini_set('max_execution_time', 60);
+ini_set('max_execution_time', 59);
 
 $config = json_decode(file_get_contents('../config.json'), 1);
 
@@ -59,9 +59,9 @@ date_default_timezone_set('Europe/Zurich');
 
 $current = date_create();
 
-setpanspeed(4);
+setpanspeed(-5);
 rotatehome();
-rotatecamera(6);
+rotatecamera($config['picture-count']/2);
 for ($i = 0; $i < $config['picture-count']; $i++) {
     takepicture($current, $i);
     rotatecamera(-1);
@@ -72,12 +72,19 @@ rotatehome();
 $folder = '../pics/' . date_format($current, 'Y/m/d/H');
 $dirhandle = opendir($folder);
 $count = 0;
+$slicewidth = 408;
+$heightadjustment = 3;
 
-$image = imagecreate(640 * $config['picture-count'], 480);
+$image = imagecreate($slicewidth * $config['picture-count'], 480-$heightadjustment);
 while (($file = readdir($dirhandle))) {
     if (startsWith($file, date_format($current, 'i') . '-')) {
         $imgtocopy = imagecreatefromjpeg($folder . '/' . $file);
-        imagecopy($image, $imgtocopy, 640 * $count++, 0, 0, 0, 640, 480);
+        if ($count == 0) {
+			imagecopy($image, $imgtocopy, $slicewidth * $count, 0, 0, 0, $slicewidth, 480-$heightadjustment);
+		} else {
+			imagecopy($image, $imgtocopy, $slicewidth * $count, $heightadjustment, 0, 0, $slicewidth, 480);
+		}
+		$count++;
     }
 }
 imagejpeg($image, $folder . '/' . date_format($current, 'i') . '-panorama.jpg');
