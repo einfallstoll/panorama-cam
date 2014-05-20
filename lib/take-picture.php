@@ -61,7 +61,7 @@ $current = date_create();
 
 rotatehome();
 rotatecamera(6);
-for ($i = 1; $i < 7; $i++) {
+for ($i = 1; $i < $config['picture-count']; $i++) {
     takepicture($current, $i);
     rotatecamera(-1);
     sleep(1);
