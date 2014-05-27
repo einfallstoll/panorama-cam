@@ -62,6 +62,7 @@ rotatehome();
 setpanspeed('5');
 rotatecamera(6);
 setpanspeed('-5');
+sleep(5); //since the call returns before the camera stops moving
 for ($i = 0; $i < $config['picture-count']; $i++) {
     sleep(1);
     takepicture($current, $i);
@@ -75,9 +76,9 @@ $count = 0;
 $slicewidth = 65;
 $heightadjustment = 1;
 
-$image = imagecreate($slicewidth * $config['picture-count'], 480-$heightadjustment);
+$image = imagecreatetruecolor($slicewidth * $config['picture-count'], 480-$heightadjustment);
 while (($file = readdir($dirhandle))) {
-    if (startsWith($file, date_format($current, 'i') . '-')) {
+    if (startsWith($file, date_format($current, 'i') . '-' . $count)) {
         $imgtocopy = imagecreatefromjpeg($folder . '/' . $file);
         if ($count == 0) {
 			imagecopy($image, $imgtocopy, $slicewidth * $count, 0, 0, 0, $slicewidth, 480-$heightadjustment);
