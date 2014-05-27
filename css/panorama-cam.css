@@ -5,6 +5,10 @@
 		height: 			100%; /* The html and body elements cannot have any padding or margin. */
 	}
 
+body {
+    padding-top: 70px;
+}
+
 	/* Wrapper for page content to push down footer */
 	#wrap {
 		min-height: 		100%;
@@ -31,3 +35,6 @@
 		padding-left: 		15px;
 		padding-right: 		15px;
 	}
+.thumbnail {
+    max-width: 100%;
+}
