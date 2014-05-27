@@ -12,6 +12,7 @@
 			<!-- CSS -->
 			<link href="css\bootstrap.min.css" rel="stylesheet">
 			<link href="css\panorama-cam.css" rel="stylesheet">
+			<link href="css\blueimp-gallery.min.css" rel="stylesheet">
 			
 			<!-- Javascript -->
 			<script src="js/jquery-2.1.1.min.js"></script>
