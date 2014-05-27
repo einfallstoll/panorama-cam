@@ -1,14 +1,15 @@
 <?php
 
-ini_set('max_execution_time', 59);
+ini_set('max_execution_time', 999);
 
 $config = json_decode(file_get_contents('../config.json'), 1);
 
 function setpanspeed($panspeed) {
     global $config;
     
-    $url = 'http://' . $config['ip'] . '/cgi-bin/camctrl.cgi?speedpan=' + $panspeed;
+    $url = 'http://' . $config['ip'] . '/cgi-bin/camctrl.cgi?speedpan=' . $panspeed;
     $curl = curl_init($url);
+	print($url);
     curl_exec($curl);
 }
 
@@ -29,9 +30,8 @@ function rotatehome() {
     
     $url = 'http://' . $config['ip'] . '/cgi-bin/camctrl.cgi?move=home';
     $curl = curl_init($url);
+	print($url);
     curl_exec($curl);
-    
-    sleep(5);
 }
 
 function rotatecamera($direction) {
@@ -45,10 +45,9 @@ function rotatecamera($direction) {
     for ($i = 0; $i < abs($direction) * 2; $i++) {
         $url = 'http://' . $config['ip'] . '/cgi-bin/camctrl.cgi?move=' . $dir;
         $curl = curl_init($url);
+		print($url);
         curl_exec($curl);
     }
-    
-    sleep(abs($direction));
 }
 
 function startsWith($haystack, $needle) {
@@ -59,21 +58,22 @@ date_default_timezone_set('Europe/Zurich');
 
 $current = date_create();
 
-setpanspeed(-5);
 rotatehome();
-rotatecamera($config['picture-count']/2);
+setpanspeed('5');
+rotatecamera(6);
+setpanspeed('-5');
 for ($i = 0; $i < $config['picture-count']; $i++) {
+    sleep(1);
     takepicture($current, $i);
     rotatecamera(-1);
-    sleep(1);
 }
 rotatehome();
 
 $folder = '../pics/' . date_format($current, 'Y/m/d/H');
 $dirhandle = opendir($folder);
 $count = 0;
-$slicewidth = 408;
-$heightadjustment = 3;
+$slicewidth = 65;
+$heightadjustment = 1;
 
 $image = imagecreate($slicewidth * $config['picture-count'], 480-$heightadjustment);
 while (($file = readdir($dirhandle))) {
@@ -82,7 +82,7 @@ while (($file = readdir($dirhandle))) {
         if ($count == 0) {
 			imagecopy($image, $imgtocopy, $slicewidth * $count, 0, 0, 0, $slicewidth, 480-$heightadjustment);
 		} else {
-			imagecopy($image, $imgtocopy, $slicewidth * $count, -$heightadjustment, 0, 0, $slicewidth, 480);
+			imagecopy($image, $imgtocopy, $slicewidth * $count, -$heightadjustment, 0, 0, $slicewidth, 480-$heightadjustment);
 		}
 		$count++;
     }
