@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 	<html lang="de">
 		<head>
+			<!-- Meta-Info -->
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<meta name="description" content="Panorama-Cam">
 			<meta name="author" content="Fabio Poloni, Florian Siffer">
@@ -20,6 +21,7 @@
 		</head>
 		<body>
 			<div id="wrap">
+				<!-- Navbar -->
 				<div class="navbar navbar-default navbar-fixed-top">
 					<div class="container">
 						<div class="navbar-header">
