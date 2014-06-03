@@ -5,10 +5,10 @@
 <?php
 
 // order for the structuring levels
-$order = array('y', 'm', 'd', 'h');
+$order = array('y', 'm', 'd', 'h', 'i');
 
 // here will the sorted levels be
-$content = array('y' => array(), 'm' => array(), 'd' => array(), 'h' => array());
+$content = array('y' => array(), 'm' => array(), 'd' => array(), 'h' => array(), 'i' => array());
 
 // months-names
 $months = array('Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
@@ -52,7 +52,8 @@ sortDir('pics');
                     <button class="btn btn-primary" data-tag-key="y" data-tag-value="<?php echo date('Y') ?>"><?php echo date('Y') ?> <i class="glyphicon glyphicon-remove"></i></button>
                     <button class="btn btn-primary" data-tag-key="m" data-tag-value="<?php echo date('m') ?>"><?php echo $months[date('m') - 1] ?> <i class="glyphicon glyphicon-remove"></i></button>
                     <button class="btn btn-primary" data-tag-key="d" data-tag-value="<?php echo date('d') ?>"><?php echo date('d') ?>. <i class="glyphicon glyphicon-remove"></i></button>
-                    <button class="btn btn-primary" data-tag-key="h" data-tag-value="<?php echo date('H') ?>"><?php echo date('H') ?> <i class="glyphicon glyphicon-remove"></i></button>
+                    <button class="btn btn-primary" data-tag-key="h" data-tag-value="<?php echo date('H') ?>"><?php echo date('H') ?> Std. <i class="glyphicon glyphicon-remove"></i></button>
+                    <button class="btn btn-primary" data-tag-key="i" data-tag-value="<?php echo date('i') ?>"><?php echo date('i') ?> Min. <i class="glyphicon glyphicon-remove"></i></button>
                 </div>
                 <div id="tag-chooser-tags">
                     <hr />
@@ -95,7 +96,18 @@ sortDir('pics');
                         sort($content['h']);
                         foreach($content['h'] as $hour) {
                         ?>
-                        <button class="btn btn-primary" data-tag-key="h" data-tag-value="<?php echo $hour ?>"><?php echo $hour ?></button>
+                        <button class="btn btn-primary" data-tag-key="h" data-tag-value="<?php echo $hour ?>"><?php echo $hour ?> Std.</button>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="tag-chooser-group">
+                        <h4>Minute</h4>
+                        <?php
+                        sort($content['i']);
+                        foreach($content['i'] as $minute) {
+                        ?>
+                        <button class="btn btn-primary" data-tag-key="i" data-tag-value="<?php echo $minute ?>"><?php echo $minute ?> Min.</button>
                         <?php
                         }
                         ?>
