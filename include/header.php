@@ -17,6 +17,7 @@
 			<script src="js/jquery-2.1.1.min.js"></script>
 			<script src="js/bootstrap.min.js"></script>
 			<script src="js/panorama-cam.js"></script>
+			<script src="js/panorama-cam-filter.js"></script>
 		</head>
 		<body>
 			<div id="wrap">
