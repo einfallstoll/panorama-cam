@@ -1,4 +1,5 @@
 <?php
+    //header.php contains pure html...
 	include "include/header.php";
     include "lib/sort-pictures.php";
 ?>
@@ -84,5 +85,6 @@
 </div>
 
 <?php
+    //footer.php contains pure html...
 	include "include/footer.php" 
 ?>
