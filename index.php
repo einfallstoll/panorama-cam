@@ -32,6 +32,8 @@ $(function() {
     
     // this will append a new filter and disabled the clicked one
     var tagChoose = function() {    
+        $(tagChooserChosen.find('i#nofilter')).remove()
+        
         if (tagChooserChosen.find('button[data-tag-key=' + $(this).data('tag-key') + '][data-tag-value=' + $(this).data('tag-value') + ']').length === 0) {
             $(this).clone().append(' <i class="glyphicon glyphicon-remove"></i>').appendTo(tagChooserChosen.append(' '))
         }
@@ -47,6 +49,10 @@ $(function() {
     var tagUnchoose = function() {
         $(tagChooserTags.find('button[data-tag-key=' + $(this).data('tag-key') + '][data-tag-value=' + $(this).data('tag-value') + ']')).removeClass('disabled')
         $(this).remove()
+        
+        if (tagChooserChosen.find('button').length === 0) {
+            tagChooserChosen.append('<i id="nofilter">Keine Filter gesetzt</i>')
+        }
         
         tagUpdate()
     }
@@ -117,6 +123,7 @@ sortDir('pics');
                     <button class="btn btn-primary" data-tag-key="h" data-tag-value="<?php echo date('H') ?>"><?php echo date('H') ?> <i class="glyphicon glyphicon-remove"></i></button>
                 </div>
                 <div id="tag-chooser-tags">
+                    <hr />
                     <div class="tag-chooser-group">
                         <h4>Jahr</h4>
                         <?php
@@ -163,6 +170,7 @@ sortDir('pics');
                     </div>
                 </div>
                 <div id="tag-chooser-results-container">
+                    <hr />
                     <h4>Gefundene Bilder</h4>
                     <div id="tag-chooser-results"></div>
                 </div>
