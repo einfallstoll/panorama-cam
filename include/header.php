@@ -30,5 +30,11 @@
 							</button>
 							<a class="navbar-brand" href="#">Panorama-Cam</a>
 						</div>
+						<div class="collapse navbar-collapse">	
+							<ul class="nav navbar-nav">
+								<li><a href="index.php">Home</a></li>
+								<li><a href="archiv.php">Archiv</a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
