@@ -1,7 +1,7 @@
 <?php
 
 // folder-structure order 
-$order = array('y', 'm', 'd', 'h');
+$order = array('y', 'm', 'd', 'h', 'i');
 
 // here will be the final pics
 $pics = array();
