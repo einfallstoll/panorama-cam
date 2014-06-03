@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div id="tag-chooser">
-                <div id="tag-chooser-chosen">
+                <div id="tag-chooser-chosen" style="display: none">
                     <h4>Filter</h4>
                     <button class="btn btn-primary" data-tag-key="y" data-tag-value="<?php echo date('Y') ?>"><?php echo date('Y') ?> <i class="glyphicon glyphicon-remove"></i></button>
                     <button class="btn btn-primary" data-tag-key="m" data-tag-value="<?php echo date('m') ?>"><?php echo $months[date('m') - 1] ?> <i class="glyphicon glyphicon-remove"></i></button>
@@ -15,7 +15,7 @@
                     <button class="btn btn-primary" data-tag-key="h" data-tag-value="<?php echo date('H') ?>"><?php echo date('H') ?> Std. <i class="glyphicon glyphicon-remove"></i></button>
                     <button class="btn btn-primary" data-tag-key="i" data-tag-value="<?php echo date('i') ?>"><?php echo date('i') ?> Min. <i class="glyphicon glyphicon-remove"></i></button>
                 </div>
-                <div id="tag-chooser-tags">
+                <div id="tag-chooser-tags" style="display: none">
                     <hr />
                     <div class="tag-chooser-group">
                         <h4>Jahr</h4>
@@ -74,8 +74,6 @@
                     </div>
                 </div>
                 <div id="tag-chooser-results-container">
-                    <hr />
-                    <h4>Gefundene Bilder</h4>
                     <div id="tag-chooser-results"></div>
                 </div>
             </div>
