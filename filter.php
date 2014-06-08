@@ -44,7 +44,10 @@ filterDir('pics');
 
 // go on and print the pics
 foreach ($pics as $pic) {
+    $pic_date = substr($pic, strpos($pic, '/') + 1);
+    $pic_date = substr($pic_date, 0, strrpos($pic_date, '/'));
 ?>
+<h5><?php echo date_format(date_create_from_format('Y/m/d/H/i', $pic_date), 'd.m.Y H:i') ?></h5>
 <img src="<?php echo $pic ?>" class="thumbnail" />
 <?php
 }
