@@ -34,4 +34,22 @@ body {
 	}
 .thumbnail {
     max-width: 100%;
+    cursor: pointer;
+}
+
+#big-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: scroll;
+}
+
+img.big {
+    opacity: 1;
+    height: 50%;
+    position: absolute;
+    top: 25%;
 }
