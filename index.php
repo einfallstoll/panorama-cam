@@ -14,7 +14,6 @@
                     <button class="btn btn-primary" data-tag-key="m" data-tag-value="<?php echo date('m') ?>"><?php echo $months[date('m') - 1] ?> <i class="glyphicon glyphicon-remove"></i></button>
                     <button class="btn btn-primary" data-tag-key="d" data-tag-value="<?php echo date('d') ?>"><?php echo date('d') ?>. <i class="glyphicon glyphicon-remove"></i></button>
                     <button class="btn btn-primary" data-tag-key="h" data-tag-value="<?php echo date('H') ?>"><?php echo date('H') ?> Std. <i class="glyphicon glyphicon-remove"></i></button>
-                    <button class="btn btn-primary" data-tag-key="i" data-tag-value="<?php echo date('i') ?>"><?php echo date('i') ?> Min. <i class="glyphicon glyphicon-remove"></i></button>
                 </div>
                 <div id="tag-chooser-tags" style="display: none">
                     <hr />
