@@ -62,4 +62,16 @@ $(function() {
             $(chosenTag).trigger('click')
         }
     })
+    
+    // show image in big
+    $('body').on('click', '.thumbnail', function() {
+        var container = $('<div id="big-container"></div>')
+        $('body').append(container)
+        $(this).clone().removeClass('thumbnail').addClass('big').appendTo(container)
+    })
+    
+    // hide image in big
+    $('body').on('click', '#big-container', function() {
+        $(this).remove()
+    })
 })
