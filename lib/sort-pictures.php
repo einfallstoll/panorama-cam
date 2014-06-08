@@ -5,6 +5,7 @@ $order = array('y', 'm', 'd', 'h', 'i');
 
 // here will the sorted levels be
 $content = array('y' => array(), 'm' => array(), 'd' => array(), 'h' => array(), 'i' => array());
+$latest = array();
 
 // months-names
 $months = array('Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
@@ -34,5 +35,31 @@ function sortDir($dir, $level = 0) {
     }
 }
 
+// latest dir
+function latestDir($dir, $level = 0) {
+    global $order, $latest;
+    $dirhandle = opendir($dir);
+    while (($file = readdir($dirhandle))) {
+        
+        // still not agreeing that this is necessary
+        if ($file == '.' || $file == '..') {
+            continue;
+        }
+        
+        // if it's a directory let's move on an sort it into the structure above
+        if (is_dir($dir . '/' . $file)) {
+            
+            // if it's not already set or later
+            if (!isset($latest[$order[$level]]) || $latest[$order[$level]] < $file) {
+                $latest[$order[$level]] = $file;
+            }
+            
+            // recursion!
+            latestDir($dir . '/' . $file, $level + 1);
+        }
+    }
+}
+
 // entry point for pics-folder
 sortDir('pics');
+latestDir('pics');
