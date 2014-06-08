@@ -13,6 +13,7 @@ $pic_sliceWidth = 65; //How much is used from each picture
 $pic_heightAdjustment = 0; //How far has the panorama to be corected between each pic
 
 //Initialization
+chdir(dirname(__FILE__));
 date_default_timezone_set('Europe/Zurich'); //Not configurable because its just the default
 ini_set('max_execution_time', $max_execution_time);
 $current = date_create(); //Will be reused because this process takes > 60 secs
