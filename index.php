@@ -1,7 +1,7 @@
 <?php
     //header.php contains pure html...
     include "include/header.php";
-    include "lib/sort-pictures.php";
+    include "include/sort-pictures.php";
 ?>
 
 <div class="container">

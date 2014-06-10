@@ -16,7 +16,7 @@ $(function() {
             data[$(this).data('tag-key')].push($(this).data('tag-value'))
         })
         
-        $.post('filter.php', data).done(function(data) {
+        $.post('lib/filter.php', data).done(function(data) {
             if (data.length === 0) {
                 tagChooserResults.html('<i>Keine Resultate gefunden.</i>')
             } else {
