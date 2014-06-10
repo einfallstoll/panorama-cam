@@ -1,32 +1,16 @@
 <?php
 
-//Configuration
-$max_execution_time = 500; //has to be <= time to next request
-$cam_adr = "192.168.2.19"; //address over which the camera can be reached 
-
-$pan_speed = '-5'; //which speed pre-set is used while taking pictures to move the camera
-$pic_folder_root = '../pics/'; //defines root folder for picture archiv
-$pic_folder_format = 'Y/m/d/H/i'; //defines archiv-structure for pictures
-
-$pic_count = 68; //how many pictures are used per panorama. the more, the better the quality
-$pic_sliceWidth = 65; //How much is used from each picture
-$pic_heightAdjustment = 0; //How far has the panorama to be corected between each pic
+include "include/configurations.php"; //Load Configs
+include "include/constants.php"; //Load Constants
 
 //Initialization
 chdir(dirname(__FILE__));
-date_default_timezone_set('Europe/Zurich'); //Not configurable because its just the default
 ini_set('max_execution_time', $max_execution_time);
-$current = date_create(); //Will be reused because this process takes > 60 secs
+$current = date_create(); //Will be reused since assembling the panorama takes > 60 secs
 $pic_targetFolder = $pic_folder_root . date_format($current, $pic_folder_format);
 if (!is_dir($pic_targetFolder)) { //Create folder if necessary
 	mkdir($pic_targetFolder, 0777, true);
 }
-$url_beginning = 'http://';
-$url_middle = '/cgi-bin/';
-$url_comm_panspeed = 'camctrl.cgi?speedpan=';
-$url_comm_rotate = 'camctrl.cgi?move=';
-$url_comm_pic = 'video.jpg';
-$url_comm_ = 'video.jpg';
 rotateHome();
 
 //Picture-Taking
