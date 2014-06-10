@@ -1,6 +1,6 @@
 <?php
     //header.php contains pure html...
-	include "include/header.php";
+    include "include/header.php";
     include "lib/sort-pictures.php";
 ?>
 
@@ -14,7 +14,7 @@
                     <button class="btn btn-primary" data-tag-key="m" data-tag-value="<?php echo $latest['m'] ?>"><?php echo $months[$latest['m'] - 1] ?> <i class="glyphicon glyphicon-remove"></i></button>
                     <button class="btn btn-primary" data-tag-key="d" data-tag-value="<?php echo $latest['d'] ?>"><?php echo $latest['d'] ?>. <i class="glyphicon glyphicon-remove"></i></button>
                     <button class="btn btn-primary" data-tag-key="h" data-tag-value="<?php echo $latest['h'] ?>"><?php echo $latest['h'] ?> Std. <i class="glyphicon glyphicon-remove"></i></button>
-                    <button class="btn btn-primary" data-tag-key="h" data-tag-value="<?php echo $latest['i'] ?>"><?php echo $latest['i'] ?> Min. <i class="glyphicon glyphicon-remove"></i></button>
+                    <button class="btn btn-primary" data-tag-key="i" data-tag-value="<?php echo $latest['i'] ?>"><?php echo $latest['i'] ?> Min. <i class="glyphicon glyphicon-remove"></i></button>
                 </div>
                 <div id="tag-chooser-tags" style="display: none">
                     <hr />
