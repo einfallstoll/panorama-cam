@@ -40,7 +40,7 @@ function filterDir($dir, $level = 0) {
 }
 
 // start filtering the folder 'pics'
-filterDir('pics');
+filterDir('../pics');
 
 // go on and print the pics
 foreach ($pics as $pic) {
