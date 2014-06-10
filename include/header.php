@@ -37,6 +37,7 @@
 							<ul class="nav navbar-nav">
 								<li><a href="index.php">Home</a></li>
 								<li><a href="archiv.php">Archiv</a></li>
+								<li><a href="control.php">Live</a></li>
 							</ul>
 						</div>
 					</div>
