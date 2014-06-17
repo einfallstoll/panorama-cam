@@ -49,7 +49,7 @@
             .fail(failed)
             
             $('#permission').click(function() {
-                $.post('/lib/get_permission.php', {
+                $.post('/lib/req_permission.php', {
                     uuid: my_uuid
                 })
                 .fail(failed)
