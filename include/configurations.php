@@ -18,4 +18,5 @@ $pic_heightAdjustment = 0; //how far has the panorama to be corected between eac
 
 //Permissions
 $permission_free_after = 30; //after how many active seconds can another client override the current permission
+$delimiter = "_"; //delimiter in permission file
 ?>

@@ -1,29 +1,27 @@
 <?php
-include "include/constants.php";
-include "include/configurations.php";
-include "include/update_permissions.php";
+include "../include/constants.php";
+include "../include/configurations.php";
+include "../include/update_permissions.php";
+
+//this returns the status of the permission request for a uuid
 
 //Initialization 
-$permissions = file($pFile);
+$permissions = json_decode(file_get_contents($pFile));
 $current = date_create();
 $current = date_timestamp_get($current);
-$found = false;
-$counter = 0;
 
-foreach($permissions as $permission) {
-	if ($permission == $_REQUEST('uuid')) {
-		if ($counter = 1) {
-			echo($permission_free_after $permissions[0] - $current)
+//no respones if not in permission-que
+if (in_array($_REQUEST['uuid'], $permissions)) {
+	if (count($permissions)==2){
+		echo('0'); //means uuid has currently controll for a unlimited ammount of time
+	} else {
+		$i = $permission_free_after - ($current-$permissions[0]);
+		if ($permissions[1]===$_REQUEST['uuid']) {
+			echo($i);
+		} else {
+			$i = $i + (array_search($_REQUEST['uuid'],$permissions)-2)*$permission_free_after;
+			echo('-'.$i);
 		}
-		$found = false;
 	}
-	$counter = $counter + 1;
 }
-//If more requests clear the first after $permission_free_after
-if ($current - $permissions[0] >= $permission_free_after && count($permissions) > 2 ) {
-	unset($permissions[1]);
-	$permissions[0] = $current;
-	file_put_contents($pFile, $permission);
-}
-
 ?>
