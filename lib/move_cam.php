@@ -14,6 +14,6 @@ if ($permissions[0][1] === $_REQUEST['uuid'] && isset($_REQUEST['direction'])) {
     curl_exec($curl);
 	echo('1');
 } else {
-	echo('0')
+	echo('0');
 }
 ?>
