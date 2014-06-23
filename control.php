@@ -20,7 +20,7 @@
         }
         
         setInterval(function() {
-            $.post('/lib/get_permission_status.php', {
+            $.post('./lib/get_permission_status.php', {
                 uuid: my_uuid
             })
             .done(function(time) {
@@ -29,17 +29,17 @@
                     
                     $('#permission').removeClass('disabled')
                     $('button[data-direction]').addClass('disabled')
-                } else if (time < 0) {
-                    $('#status').text('Sie bekommen in ca. ' + time + ' Sek. die Steuerung der Kamera.')
+                } else if (parseInt(time) < 0) {
+                    $('#status').text('Sie bekommen in ca. ' + Math.abs(time) + ' Sek. die Steuerung der Kamera.')
                     
                     $('#permission').addClass('disabled')
                     $('button[data-direction]').removeClass('disabled')
-                } else if (time > 0) {
+                } else if (parseInt(time) > 0) {
                     $('#status').text('Sie haben noch ca. ' + time + ' Sek. Zeit, um die Kamera zu steuern.')
                     
                     $('#permission').addClass('disabled')
                     $('button[data-direction]').removeClass('disabled')
-                } else if (time == 0) {
+                } else if (parseInt(time) == 0) {
                     $('#status').text('Ihre Kamerazeit ist abgelaufen, aber kein anderen Benutzer hat eine Anfrage gestellt. Sie können weiterhin die Kamera steuern.')
                     
                     $('#permission').addClass('disabled')
@@ -47,22 +47,22 @@
                 }
             })
             .fail(failed)
-            
-            $('#permission').click(function() {
-                $.post('/lib/req_permission.php', {
-                    uuid: my_uuid
-                })
-                .fail(failed)
-            })
-            
-            $('button[data-direction]').click(function() {
-                $.post('/lib/move_cam.php', {
-                    uuid: my_uuid,
-                    direction: $(this).data('direction')
-                })
-                .fail(failed)
-            })
         }, 500)
+        
+        $('#permission').click(function() {
+            $.post('./lib/req_permission.php', {
+                uuid: my_uuid
+            })
+            .fail(failed)
+        })
+
+        $('button[data-direction]').click(function() {
+            $.post('./lib/move_cam.php', {
+                uuid: my_uuid,
+                direction: $(this).data('direction')
+            })
+            .fail(failed)
+        })
     })
 </script>
 
