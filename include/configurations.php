@@ -15,4 +15,8 @@ $pan_speed = '-5'; //which speed pre-set is used while taking pictures to move t
 $pic_count = 68; //how many pictures are used per panorama. the more, the better the quality
 $pic_sliceWidth = 65; //how much is used from each picture
 $pic_heightAdjustment = 0; //how far has the panorama to be corected between each pic
+
+//Permissions
+$permission_free_after = 30; //after how many active seconds can another client override the current permission
+$delimiter = "_"; //delimiter in permission file
 ?>
