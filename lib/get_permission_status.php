@@ -15,7 +15,7 @@ if (file_exists($pFile)) {
 	//no respones if not in permission-que
 	if (in_array_r($_REQUEST['uuid'], $permissions)) {
         $int = $permission_free_after - ($current-$permissions[0][0]);			
-        if ($permissions[0][1]===$_REQUEST['uuid']) {
+        if ($permissions[0][1] === $_REQUEST['uuid']) {
             if ($int < 0) {
                 echo('0'); //means uuid has currently controll for a unlimited ammount of time
             } else {
@@ -26,11 +26,11 @@ if (file_exists($pFile)) {
                 // the first takes not a full time
                 // the last is the requesting client
                 if ($permissions[$i][1] == $_REQUEST['uuid']) {
-                    $int = $int + $i*$permission_free_after;
+                    $int = $int + $i * $permission_free_after;
                     break;
                 }
             }
-            echo('-'.$int); //gains control in this amount of time
+            echo('-' . $int); //gains control in this amount of time
         }
 	}
 }
