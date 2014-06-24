@@ -22,11 +22,11 @@ if (file_exists($pFile)) {
                 echo($int); //has controll for this amount of time left
             }
         } else {
-            for ($i = 1; $i < count($permissions) - 1; $i++) {
-                // the first takes not a full time
+            for ($i = 1; $i < count($permissions); $i++) {
+                // the first has left time already in $int
                 // the last is the requesting client
                 if ($permissions[$i][1] == $_REQUEST['uuid']) {
-                    $int = $int + $i * $permission_free_after;
+                    $int = $int + ($i-1) * $permission_free_after;
                     break;
                 }
             }
