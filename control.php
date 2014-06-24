@@ -1,6 +1,7 @@
 <?php
     //header.php contains pure html...
     include "include/header.php";
+    include "include/configurations.php";
 ?>
 
 <script>
@@ -33,7 +34,7 @@
                     $('#status').text('Sie bekommen in ca. ' + Math.abs(time) + ' Sek. die Steuerung der Kamera.')
                     
                     $('#permission').addClass('disabled')
-                    $('button[data-direction]').removeClass('disabled')
+                    $('button[data-direction]').addClass('disabled')
                 } else if (parseInt(time) > 0) {
                     $('#status').text('Sie haben noch ca. ' + time + ' Sek. Zeit, um die Kamera zu steuern.')
                     
@@ -104,7 +105,7 @@
 	<div class="row">
         <div class="col-xs-12 text-center">
 			<hr />
-            <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" width="480" height="320" target="rtsp://<?php echo isset($_REQUEST['ip']) ? $_REQUEST['ip'] : 'default' ?>/live.sdp" /><br>
+            <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" width="480" height="320" target="rtsp://<?php echo isset($_REQUEST['ip']) ? $_REQUEST['ip'] : $cam_adr ?>/live.sdp" /><br>
 			<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab"></object>
         </div>
     </div>
